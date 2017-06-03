@@ -15,7 +15,7 @@ gem 'rack-cors'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug'
 end
 
 group :development do
@@ -27,6 +27,3 @@ end
 group :production do
   gem 'puma', '~> 3.7'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
