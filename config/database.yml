@@ -25,6 +25,11 @@ production:
   encoding: unicode
   url:      <%= ENV["DATABASE_URL"] %>
   pool:     <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+  pool:     <%= ENV.fetch('DB_POOL') do
+                  proc_num = ENV.fetch('WEB_CONCURRENCY', 1).to_i
+                  max = ENV['MAX_THREADS'].to_i * proc_num
+                  max == 0 ? 5 : max
+                end %>
   database: production_db
   username:
   password:
