@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.1'
-gem 'sqlite3'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
@@ -16,6 +15,7 @@ gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -26,4 +26,5 @@ end
 
 group :production do
   gem 'puma', '~> 3.7'
+  gem 'pg'
 end
