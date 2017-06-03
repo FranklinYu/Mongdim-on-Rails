@@ -49,3 +49,11 @@ Now you can launch Mongdim with Puma:
     $ bundle exec puma
 
 [connection string]: https://www.postgresql.org/docs/9.6/static/libpq-connect.html#LIBPQ-CONNSTRING
+
+### note for Heroku
+
+Heroku Ruby buildpack [doesn't recognize `.ruby-version` file][ruby-version].
+To deploy on Heroku, manually [spedify it in `Gemfile`][bundle-ruby].
+
+[bundle-ruby]: https://bundler.io/v1.15/gemfile_ruby.html
+[ruby-version]: https://github.com/heroku/heroku-buildpack-ruby/issues/568
