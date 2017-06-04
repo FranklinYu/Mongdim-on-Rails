@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.1'
 gem 'jbuilder', '~> 2.5'
-gem 'bcrypt', '~> 3.1.7'
-gem 'rack-cors'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'bcrypt', '~> 3.1'
+gem 'rack-cors', '~> 0.4.1'
 
 group :development, :test do
   gem 'byebug'
@@ -15,10 +12,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'spring-commands-rspec'
+  gem 'listen'
+  gem 'spring', '~> 2.0'
+  gem 'spring-watcher-listen'
+  gem 'spring-commands-rspec', '~> 1.0'
 end
 
 group :production do
