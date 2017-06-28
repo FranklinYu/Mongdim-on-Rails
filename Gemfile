@@ -23,3 +23,5 @@ group :production do
   gem 'puma', '~> 3.7'
   gem 'pg'
 end
+
+gem 'yard', '~> 0.9.8', group: :documentation
