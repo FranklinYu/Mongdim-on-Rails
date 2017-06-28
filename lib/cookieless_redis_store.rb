@@ -1,5 +1,4 @@
 require 'securerandom'
-require 'json'
 require 'redis'
 
 # === usage
@@ -12,6 +11,21 @@ require 'redis'
 #     redis: {database: 0}, expire_after: 1.month
 #
 # See {#initialize} for possible parameters.
+#
+# === note
+#
+# In controller, session values will be converted to string with +#to_s+. For
+# example, if you have
+#
+#   session[:foo] = 1
+#   session[:bar] = true
+#
+# in your controller, then in next request you will get
+#
+#   session[:foo] # => "1"
+#   session[:bar] # => "true"
+#
+# so you need to convert it to the type yourself.
 class CookielessRedisStore < ActionDispatch::Session::AbstractStore
   REDIS_OPTION_KEYS = %i(
     url host port path timeout connect_timeout password db driver tcp_keepalive
@@ -56,13 +70,13 @@ class CookielessRedisStore < ActionDispatch::Session::AbstractStore
       [new_session_id, {}]
     else
       begin
-        session = JSON.parse(@redis.get(session_id) || 'null')
-        if session.nil?
+        session = @redis.hgetall(session_id)
+        if session.empty?
           [new_session_id, {}]
         else
           [session_id, session]
         end
-      rescue Redis::BaseError, JSON::JSONError => e
+      rescue Redis::BaseError => e
         @on_error.call(e, request, session_id)
         [new_session_id, {}]
       end
@@ -70,7 +84,8 @@ class CookielessRedisStore < ActionDispatch::Session::AbstractStore
   end
 
   private def write_session(request, session_id, session, options)
-    @redis.set(session_id, JSON.generate(session), ex: options[:expire_after])
+    @redis.mapped_hmset(session_id, session)
+    @redis.expire(session_id, options[:expire_after])
     session_id
   rescue Redis::BaseError => e
     @on_error.call(e, request, session_id, session)
