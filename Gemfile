@@ -10,6 +10,7 @@ group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.6'
+  gem 'dotenv-rails', '~> 2.2'
 end
 
 group :development do
