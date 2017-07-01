@@ -4,7 +4,7 @@ gem 'rails', '~> 5.1'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1'
 gem 'rack-cors', '~> 0.4.1'
-gem 'redis', '~>3.2'
+gem 'redis', '~> 3.2'
 
 group :development, :test do
   gem 'byebug'
