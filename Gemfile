@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1'
-gem 'rack-cors', '~> 0.4.1'
+gem 'rack-cors', '~> 1.0.2'
 
 group :development, :test do
   gem 'byebug'
