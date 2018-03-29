@@ -41,7 +41,7 @@ GEM
     arel (8.0.0)
     bcrypt (3.1.11)
     builder (3.2.3)
-    byebug (9.1.0)
+    byebug (10.0.1)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     diff-lcs (1.3)
