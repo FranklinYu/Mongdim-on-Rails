@@ -19,6 +19,6 @@ group :development do
 end
 
 group :production do
-  gem 'puma', '~> 3.7'
+  gem 'puma', '~> 3.11'
   gem 'pg'
 end
